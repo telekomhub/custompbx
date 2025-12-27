@@ -90,24 +90,16 @@ RUN apt-get update && apt-get install -y freeswitch \
                                          freeswitch-mod-nibblebill \
                                          freeswitch-mod-cdr-mongodb \
                                          freeswitch-mod-perl \
-                                         freeswitch-mod-opal \
                                          freeswitch-mod-distributor \
                                          freeswitch-mod-cdr-pg-csv \
                                          freeswitch-mod-alsa \
-                                         freeswitch-mod-fax \
                                          freeswitch-mod-lcr \
                                          freeswitch-mod-memcache \
-                                         freeswitch-mod-osp \
-                                         freeswitch-mod-python \
                                          freeswitch-mod-redis \
-                                         freeswitch-mod-zeroconf \
-                                         freeswitch-mod-cepstral \
                                          freeswitch-mod-oreka \
                                          freeswitch-mod-pocketsphinx \
                                          freeswitch-mod-tts-commandline \
-                                         freeswitch-mod-unicall \
-                                         freeswitch-mod-xml-rpc \
-                                         freeswitch-mod-mongo
+                                         freeswitch-mod-xml-rpc
 
 # Clean up sensitive files
 RUN rm -f /etc/apt/auth.conf /usr/share/keyrings/signalwire-freeswitch-repo.gpg
