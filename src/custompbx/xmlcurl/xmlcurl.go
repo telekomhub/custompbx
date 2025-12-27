@@ -134,19 +134,20 @@ func Configuration(post map[string]string) []byte {
 
 	configName, ok := post[postKeyValue]
 
-	if ok {
-		config := altData.GetConfigSection(configName, post)
-		if config == nil {
-			return NotFound(post)
-		}
-
-		section.Configuration = config
-		document.addSection(section)
-		document.Comment = fmt.Sprintf("section: %s, keyValue: %s, purpose: %s, user: %s, domain: %s, profile: %s, context: %s",
-			post["section"], post[postKeyValue], post[postPurpose], post[postUser], post[postDomain], post[postProfile], post[postCallerContext])
-		return prepareDocument(document)
+	if !ok {
+		return NotFound(post)
 	}
-	return NotFound(post)
+
+	config := altData.GetConfigSection(configName, post)
+	if config == nil {
+		return NotFound(post)
+	}
+
+	section.Configuration = config
+	document.addSection(section)
+	document.Comment = fmt.Sprintf("section: %s, keyValue: %s, purpose: %s, user: %s, domain: %s, profile: %s, context: %s",
+		post["section"], post[postKeyValue], post[postPurpose], post[postUser], post[postDomain], post[postProfile], post[postCallerContext])
+	return prepareDocument(document)
 }
 
 func Dialplan(post map[string]string, events chan interface{}) []byte {
